@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "tigergraph",
+  "description": "TigerGraph plugins for Claude Code",
+  "owner": {
+    "name": "TigerGraph Inc.",
+    "email": "support@tigergraph.com",
+    "url": "https://www.tigergraph.com"
+  },
+  "plugins": [
+    {
+      "name": "tigergraph",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/tigergraph/tigergraph-mcp.git",
+        "path": "plugins/tigergraph"
+      },
+      "displayName": "TigerGraph (Self-Managed MCP)",
+      "description": "Connect to any TigerGraph deployment — self-managed, on-premise, or a TigerGraph Savanna instance — using your host and credentials. Explore and evolve the graph schema, run GSQL and Cypher, load data from files and warehouses, and search vector embeddings.",
+      "homepage": "https://github.com/tigergraph/tigergraph-mcp/tree/main/plugins/tigergraph#readme",
+      "license": "Apache-2.0",
+      "category": "database"
+    }
+  ]
+}
