@@ -11,8 +11,8 @@ baseline.json          last full run: mean score per case, model and arm
 run.py                 run cases, grade them, compare with the baseline
 validate.py            check the case files; on a PR, check that changed skills come with cases
 cluster_state.sh       state snapshot for runs on a live cluster (run.py --state-cmd)
-check_commands.py      flag gadmin subcommands and config entries that do not exist
-build_reference.py     generate tg_reference.json, the list check_commands.py checks against
+check_commands.py      flag gadmin subcommands and config entries that do not exist (run.py uses it when tg_reference.json is present)
+build_reference.py     generate tg_reference.json from a TigerGraph install
 check_doc_links.py     check that docs pages named in the skills resolve
 ```
 

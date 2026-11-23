@@ -5,7 +5,7 @@
     "email": "support@tigergraph.com"
   },
   "metadata": {
-    "description": "TigerGraph plugins for AI coding agents"
+    "description": "TigerGraph plugins for AI agents"
   },
   "plugins": [
     {

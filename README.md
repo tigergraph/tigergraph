@@ -1,4 +1,4 @@
-# TigerGraph plugins for AI coding agents
+# TigerGraph plugins for AI agents
 
 The `tigergraph` plugin marketplace for [Claude Code](https://code.claude.com), Codex, GitHub
 Copilot CLI, Cursor and other agents that load plugins or skills.
@@ -81,8 +81,7 @@ claude plugin install tigergraph@tigergraph
 
 A plugin with source code lives in its own repository and is referenced from here, like
 `tigergraph`. A plugin that is only text, such as skills, lives under [`plugins/`](plugins).
-See [AGENTS.md](AGENTS.md) for the manifest rules, the skill authoring rules, and the checks
-CI runs, and [evals/README.md](evals/README.md) for the test cases every skill change comes with.
+See [AGENTS.md](AGENTS.md) for the manifest and skill authoring rules.
 
 ## License
 

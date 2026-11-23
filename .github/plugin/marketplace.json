@@ -1,6 +1,6 @@
 {
   "name": "tigergraph",
-  "description": "TigerGraph plugins for AI coding agents",
+  "description": "TigerGraph plugins for AI agents",
   "owner": {
     "name": "TigerGraph Inc.",
     "email": "support@tigergraph.com",

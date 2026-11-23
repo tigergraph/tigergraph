@@ -61,10 +61,6 @@ jobs:
       - name: Plugins install in Codex and Copilot
         run: scripts/smoke_install.sh
 
-      - name: Commands named in skills exist
-        if: hashFiles('evals/tg_reference.json') != ''
-        run: python3 evals/check_commands.py $(find plugins -name '*.md')
-
       - name: Docs pages named in skills resolve
         continue-on-error: true  # depends on the public docs site
         run: python3 evals/check_doc_links.py $(find plugins -name '*.md')

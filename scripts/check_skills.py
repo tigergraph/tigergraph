@@ -31,7 +31,7 @@ for path in sorted(glob.glob(f"{ROOT}/plugins/*/skills/*/SKILL.md")):
         errs.append(f"{rel}: name '{name}' must match the folder name '{folder}'")
     if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", name):
         errs.append(f"{rel}: name must be lowercase letters, digits and single hyphens")
-    for ref in re.findall(r"`(references/[^`]+\.md)`", text):
+    for ref in sorted(set(re.findall(r"`(references/[^`]+\.md)`", text))):
         if not os.path.exists(os.path.join(os.path.dirname(path), ref)):
             errs.append(f"{rel}: links to missing {ref}")
 
