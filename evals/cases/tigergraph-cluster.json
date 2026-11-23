@@ -1,0 +1,186 @@
+{
+  "cases": [
+    {
+      "id": 4,
+      "name": "ha-sizing-10-nodes",
+      "skills": [
+        "tigergraph-cluster"
+      ],
+      "mode": "laptop",
+      "prompt": "We're planning a TigerGraph cluster on 10 machines and need high availability. What replication factor and partition count should we use, how are reads and writes handled across replicas, and what stops working if one machine dies?",
+      "assertions": [
+        "All gadmin subcommands, config entries and gcollect component names in the answer exist (programmatic check)",
+        "States that 10 machines with replication factor 2 gives 5 partitions (cluster size = P × R)",
+        "States HA needs replication factor >= 2 (and at least 3 machines)",
+        "States writes go synchronously to all replicas and complete only when all acknowledge",
+        "Does not claim that writes and connector loading keep working unaffected on the partition with the failed node",
+        "Lists at least 3 of: schema changes blocked, new query install blocked, connector loading into affected partition blocked, export blocked",
+        "Mentions client-side retry for queries that fail during failover"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "service-roles",
+      "skills": [
+        "tigergraph-cluster"
+      ],
+      "mode": "laptop",
+      "prompt": "In `gadmin status` I see services called CTRL, EXE, IFM, DICT and KAFKASTRM-LL. What does each of them do? Also our GSQL service won't come up after a restart — which other services should I check first and why?",
+      "assertions": [
+        "All gadmin subcommands, config entries and gcollect component names in the answer exist (programmatic check)",
+        "CTRL described as the cluster controller/coordinator that gadmin talks to",
+        "EXE described as the per-node executor that carries out actions",
+        "IFM described as the health/metrics monitoring service",
+        "DICT described as the dictionary / metadata (catalog) store",
+        "KAFKASTRM-LL described as aggregating loading progress (Kafka Streams) for loading status",
+        "Lists GSQL's dependencies including ETCD, ZK or DICT, GPE/GSE, RESTPP, and KAFKACONN or KAFKASTRM-LL",
+        "Recommends checking from the bottom of the dependency chain (ETCD/ZK/Kafka) upward"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "partition-skew",
+      "skills": [
+        "tigergraph-cluster"
+      ],
+      "mode": "laptop",
+      "prompt": "Our TigerGraph cluster has 6 partitions (R=2, 12 machines) and one or two partitions hold noticeably more data than the others. Why does this happen and what can we do about it, now and for the next cluster we build?",
+      "assertions": [
+        "All gadmin subcommands, config entries and gcollect component names in the answer exist (programmatic check)",
+        "Identifies hash-bucket distribution as the cause, with 32 buckets by default (2^5)",
+        "Names the parameter GPE.NumberOfHashBucketInBit",
+        "Computes that 32 mod 6 = 2, so two partitions get an extra bucket",
+        "Says the bucket count must be set before loading, or that changing it later needs repartitioning/reload",
+        "Advises against going below the default bucket count, and notes that more buckets add overhead/contention"
+      ]
+    },
+    {
+      "id": 905,
+      "name": "b3-schema-blocked",
+      "skills": [
+        "tigergraph-cluster"
+      ],
+      "mode": "laptop",
+      "prompt": "One machine in our production cluster has a hardware failure and isn't fixed yet. Queries still run, but a schema change that adds an attribute keeps failing, and install query doesn't work either. Is this normal? Do we just have to wait until the machine is repaired?",
+      "assertions": [
+        "Says this is expected with a failed node: schema changes and installing new queries are blocked, while installed and interpreted queries keep running (also export / connector loading into that partition limited)",
+        "Gives the way out without waiting: removing the failed node from the cluster restores full operation, at the cost of one fewer replica for that partition until a replacement is added",
+        "Notes running queries can fail briefly while the cluster adjusts, so clients should retry"
+      ]
+    },
+    {
+      "id": 907,
+      "name": "b3-six-node-sizing",
+      "skills": [
+        "tigergraph-cluster"
+      ],
+      "mode": "laptop",
+      "prompt": "Planning prod: budget is 6 identical servers. About 1.2 TB of raw CSV, workload is mostly 2-3 hop lookups from an API plus a nightly PageRank and community detection run. Should we go replication factor 2 or 3? What does the partition layout look like, and how much RAM and disk per box?",
+      "assertions": [
+        "Layouts: RF 2 -> 3 partitions x 2 replicas; RF 3 -> 2 partitions x 3 replicas; each node holds 1/P of one copy",
+        "Memory: uses the documented sizing approach (graph size after compression x factor; factor ~3 for algorithmic workloads like PageRank) and states the compression assumption, then divides per node",
+        "Disk/hardware: SSD, disk per node about equal to RAM per node (more if backups kept locally), 10 GbE",
+        "Trade-off: RF 3 needs more RAM per box (half a copy) but keeps more copies; RF set at install, changeable later only via expand/shrink with downtime"
+      ]
+    },
+    {
+      "id": 908,
+      "name": "b3-two-node-ha",
+      "skills": [
+        "tigergraph-cluster"
+      ],
+      "mode": "laptop",
+      "prompt": "Can I get HA with just two servers if I set replication factor 2? My boss doesn't want to pay for a third box.",
+      "assertions": [
+        "No: HA needs at least 3 servers because the coordination services (ZooKeeper/ETCD) need a majority; RF 2 on 2 servers doesn't survive losing one",
+        "Gives the cheapest real HA: 3 servers (e.g. 1x3 or RF 2 with 3 machines), or 2x2 with partitioning",
+        "Offers the alternative if a third box is impossible: a second cluster with cross-region replication for DR (read-only standby, manual failover) and says it is not automatic HA"
+      ]
+    },
+    {
+      "id": 909,
+      "name": "b3-two-datacenters",
+      "skills": [
+        "tigergraph-cluster"
+      ],
+      "mode": "laptop",
+      "prompt": "We run in two data centers (east and west, ~60ms apart). Requirement: if an entire DC goes away we keep serving reads within minutes, and writes can come back a bit later. Should we stretch one TigerGraph cluster across both DCs or run two clusters? What do we lose either way?",
+      "assertions": [
+        "Stretching one cluster across only two DCs can't survive losing a whole DC: region awareness needs at least 3 regions/zones (for quorum), and stretched clusters pay cross-DC latency",
+        "Two clusters with cross-region replication fit the requirement: reads from the read-only DR cluster immediately, writes after a manual promotion",
+        "What CRR loses: some things aren't replicated (e.g. gadmin config, GraphStudio metadata) and certain operations break sync; lag/RPO not documented (stated as unknown, not invented)"
+      ]
+    },
+    {
+      "id": 910,
+      "name": "b3-skewed-memory",
+      "skills": [
+        "tigergraph-cluster"
+      ],
+      "mode": "laptop",
+      "prompt": "4-node cluster, RF 1. One node always sits at way higher memory than the other three, and it's the one that gets OOM-killed during big queries. Our data has some huge hub accounts with millions of edges. Is TigerGraph not spreading data evenly? Would adding more nodes fix it?",
+      "assertions": [
+        "Separates storage skew from compute skew and says how to check storage per node (gstatusgraph / per-partition sizes) versus which GPE grows during the query",
+        "Explains hub vertices concentrate work/memory on the node holding them and adding nodes may not help; placement claims are consistent with the docs (data is distributed across partitions in hash buckets, bucket count configurable to reduce skew)",
+        "Gives practical mitigations: query-side (limit expansion from hubs, per-query memory limit) and notes RF 1 means an OOM takes that partition offline; HA needs RF >= 2 and >= 3 nodes"
+      ]
+    },
+    {
+      "id": 1106,
+      "name": "b5-read-your-writes",
+      "skills": [
+        "tigergraph-cluster"
+      ],
+      "mode": "laptop",
+      "prompt": "We plan to use TigerGraph for real-time risk control. Can the next request immediately read data the application just wrote? Could it read half-written data?",
+      "assertions": [
+        "States the isolation guarantee from the docs: read-committed (MVCC); each query / REST request is a transaction, so no half-written data is read",
+        "Read-your-writes: an upsert returns after all replicas apply it by default (ack=all), so the next request sees it; ack=none weakens this",
+        "Caveats: read-committed is not serializable (two requests can see different snapshots), and large loading jobs are not one atomic transaction (or marked as unverified)"
+      ]
+    },
+    {
+      "id": 1107,
+      "name": "b5-rf1-to-rf2-in-place",
+      "skills": [
+        "tigergraph-cluster"
+      ],
+      "mode": "laptop",
+      "prompt": "We run a 4-node TigerGraph 4.3 cluster in prod with replication factor 1, about 600 GB of data root per node. Management now wants HA. Can we just switch it to replication factor 2 on the same 4 machines? What does that cost us in downtime, disk and capacity?",
+      "assertions": [
+        "Yes, by repartitioning in place (gadmin cluster expand --ha 2 on the same nodes), giving 2 partitions x 2 replicas",
+        "Downtime: several minutes (scales with data), no loading/queries/REST during it, full backup first",
+        "Disk: needs extra staging space per node (the docs formula, about (1 + ceil(old/new partitions)) x data root, or a staging path), and each node ends up holding about twice the data",
+        "Capacity trade-off: per-node memory/disk roughly double; compares with adding nodes instead"
+      ]
+    },
+    {
+      "id": 1108,
+      "name": "b5-replace-bundled-kafka",
+      "skills": [
+        "tigergraph-cluster"
+      ],
+      "mode": "laptop",
+      "prompt": "why does tigergraph ship its own kafka?? our platform team wants to rip it out or point tigergraph at the company kafka cluster instead. is that ok",
+      "assertions": [
+        "Explains the bundled Kafka is internal plumbing on the update/loading path (message passing between services), not an optional add-on",
+        "Says removing it or repointing TigerGraph's internal messaging at an external broker isn't supported/documented and would break updates and loading; recommends not doing it",
+        "Gives the supported ways to integrate with company Kafka: loading from an external Kafka as a data source, and/or CDC publishing to external Kafka"
+      ]
+    },
+    {
+      "id": 1209,
+      "name": "b6-vertex-id-design",
+      "skills": [
+        "tigergraph-cluster"
+      ],
+      "mode": "laptop",
+      "prompt": "We're about to design our first TigerGraph schema. Anything about vertex IDs we should get right up front?",
+      "assertions": [
+        "IDs can't be changed once a vertex is inserted, so choose a stable business key",
+        "Allowed ID types (STRING, INT, UINT, DATETIME for PRIMARY_ID) and composite PRIMARY KEY option",
+        "primary_id_as_attribute: makes the ID readable as an attribute but stores it twice"
+      ]
+    }
+  ]
+}

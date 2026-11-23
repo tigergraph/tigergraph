@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "id": 1109,
+      "name": "b5-multigraph-vs-clusters",
+      "skills": [],
+      "mode": "laptop",
+      "prompt": "Four business units each want their own graph. Should we put them all as separate graphs on one big TigerGraph cluster or give each one its own cluster? What are the gotchas?",
+      "assertions": [
+        "Explains MultiGraph: separate graphs on one cluster with per-graph users/roles and jobs/queries",
+        "Gotcha: no resource isolation (all graphs share the same GPE/GSE), so a noisy tenant affects others; mitigations such as workload queues / per-query memory limits",
+        "Gotcha: shared blast radius and maintenance (cluster-wide downtime for expand/config apply/upgrades, one version), and global types/global privileges shared across graphs",
+        "Gives a decision rule (e.g. separate clusters when isolation, independent upgrades or different SLAs matter; one cluster when cost/ops simplicity and shared data matter)"
+      ]
+    },
+    {
+      "id": 1110,
+      "name": "b5-distributed-queries",
+      "skills": [],
+      "mode": "laptop",
+      "prompt": "do I need to put DISTRIBUTED on all my queries now that we moved to a cluster?",
+      "assertions": [
+        "No: by default one machine acts as the execution hub and pulls data from the others; DISTRIBUTED moves computation across the cluster",
+        "Use DISTRIBUTED for queries that start from very large vertex sets / whole-graph algorithms (PageRank etc.); short lookups from a few seeds stay default",
+        "Mentions a cost or limitation: fewer workers for concurrent queries and/or unsupported functions/subquery limits; advises testing both modes"
+      ]
+    },
+    {
+      "id": 1207,
+      "name": "b6-async-query",
+      "skills": [],
+      "mode": "laptop",
+      "prompt": "Our API gateway kills any HTTP request after 60 seconds, but our nightly fraud-scoring query in TigerGraph takes ~25 minutes. How should the client call it?",
+      "assertions": [
+        "Use detached/async mode: send the query with the GSQL-ASYNC: true header, get a request ID back immediately",
+        "Poll /query_status and fetch /query_result with that request ID",
+        "Notes the query's own timeout still applies (raise it, e.g. GSQL-TIMEOUT) and results are kept only for a limited time"
+      ]
+    },
+    {
+      "id": 1208,
+      "name": "b6-interpret-everywhere",
+      "skills": [],
+      "mode": "laptop",
+      "prompt": "Installing queries is slow and annoying. Is there any real downside if we just run everything as interpreted queries in production?",
+      "assertions": [
+        "Interpreted queries can run slower than installed (compiled) ones",
+        "Interpreted mode doesn't support every GSQL feature (documented limitations list, e.g. some output/file features)",
+        "Recommends interpreting during development and installing production/hot paths (and notes the call path differs)"
+      ]
+    },
+    {
+      "id": 1210,
+      "name": "b6-s3-nightly",
+      "skills": [],
+      "mode": "laptop",
+      "prompt": "Every night a batch of CSV files lands in an S3 bucket. What's the cleanest way to get them into TigerGraph without copying them onto the servers first?",
+      "assertions": [
+        "Create an S3 data source (CREATE DATA_SOURCE with type s3) and a loading job reading $source:s3://bucket/path",
+        "Credentials: access/secret keys or an IAM role attached to every node (instance profile)",
+        "How to run nightly: RUN LOADING JOB per batch (directory path with filename filter) or continuous mode (EOF=false), and how to avoid reloading old files is addressed or marked unknown"
+      ]
+    }
+  ]
+}
