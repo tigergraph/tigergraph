@@ -1,0 +1,17 @@
+{
+  "name": "tigergraph",
+  "owner": {
+    "name": "TigerGraph Inc.",
+    "email": "support@tigergraph.com"
+  },
+  "metadata": {
+    "description": "TigerGraph plugins for AI coding agents"
+  },
+  "plugins": [
+    {
+      "name": "tigergraph-skills",
+      "source": "plugins/tigergraph-skills",
+      "description": "Skills that teach the agent how a TigerGraph cluster works and how to operate it from the command line with gadmin, gsql and the cluster scripts. No database connection needed."
+    }
+  ]
+}
