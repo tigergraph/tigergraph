@@ -1,0 +1,33 @@
+{
+  "name": "tigergraph",
+  "interface": {
+    "displayName": "TigerGraph"
+  },
+  "plugins": [
+    {
+      "name": "tigergraph",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/tigergraph/tigergraph-mcp.git",
+        "path": "plugins/tigergraph"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "tigergraph-skills",
+      "source": {
+        "source": "local",
+        "path": "./plugins/tigergraph-skills"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

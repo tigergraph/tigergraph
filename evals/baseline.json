@@ -1,0 +1,1013 @@
+{
+ "note": "Mean share of assertions passed (0-100) per case, model and arm, from the last full run. evals/run.py --compare reads it.",
+ "cases": {
+  "101": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   }
+  },
+  "102": {
+   "sonnet": {
+    "with": 91.7,
+    "without": 91.7,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 91.7,
+    "runs": 2
+   }
+  },
+  "103": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 80.0,
+    "runs": 2
+   }
+  },
+  "104": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 92.9,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 85.7,
+    "runs": 2
+   }
+  },
+  "201": {
+   "opus": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "sonnet": {
+    "with": 85.7,
+    "without": 78.6,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 85.7,
+    "runs": 2
+   }
+  },
+  "202": {
+   "opus": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "sonnet": {
+    "with": 91.7,
+    "without": 83.3,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   }
+  },
+  "203": {
+   "opus": {
+    "with": 100.0,
+    "without": 92.9,
+    "runs": 2
+   },
+   "sonnet": {
+    "with": 92.9,
+    "without": 71.4,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 78.6,
+    "without": 78.6,
+    "runs": 2
+   }
+  },
+  "204": {
+   "opus": {
+    "with": 91.7,
+    "without": 91.7,
+    "runs": 2
+   },
+   "sonnet": {
+    "with": 91.7,
+    "without": 33.3,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 66.7,
+    "runs": 2
+   }
+  },
+  "301": {
+   "sonnet": {
+    "with": 91.7,
+    "without": 66.7,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 75.0,
+    "without": 75.0,
+    "runs": 2
+   }
+  },
+  "302": {
+   "sonnet": {
+    "with": 66.7,
+    "without": 66.7,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 66.7,
+    "runs": 2
+   }
+  },
+  "303": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 92.9,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   }
+  },
+  "304": {
+   "opus": {
+    "with": 83.3,
+    "without": 83.3,
+    "runs": 2
+   },
+   "sonnet": {
+    "with": 66.7,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 66.7,
+    "without": 50.0,
+    "runs": 2
+   }
+  },
+  "401": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 80.0,
+    "without": 80.0,
+    "runs": 2
+   }
+  },
+  "402": {
+   "sonnet": {
+    "with": 80.0,
+    "without": 80.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   }
+  },
+  "403": {
+   "sonnet": {
+    "with": 91.7,
+    "without": 75.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 66.7,
+    "runs": 2
+   }
+  },
+  "404": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 83.3,
+    "without": 50.0,
+    "runs": 2
+   }
+  },
+  "501": {
+   "sonnet": {
+    "with": 78.6,
+    "without": 57.1,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 92.9,
+    "without": 78.6,
+    "runs": 2
+   }
+  },
+  "502": {
+   "sonnet": {
+    "with": 58.3,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 75.0,
+    "without": 41.7,
+    "runs": 2
+   }
+  },
+  "503": {
+   "sonnet": {
+    "with": 83.3,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 91.7,
+    "without": 58.3,
+    "runs": 2
+   }
+  },
+  "504": {
+   "sonnet": {
+    "with": 75.0,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 75.0,
+    "without": 66.7,
+    "runs": 2
+   }
+  },
+  "505": {
+   "sonnet": {
+    "with": 80.0,
+    "without": 30.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 70.0,
+    "without": 60.0,
+    "runs": 2
+   }
+  },
+  "506": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 91.7,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 83.3,
+    "without": 83.3,
+    "runs": 2
+   }
+  },
+  "507": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 91.7,
+    "without": 91.7,
+    "runs": 2
+   }
+  },
+  "508": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 80.0,
+    "runs": 2
+   }
+  },
+  "601": {
+   "sonnet": {
+    "with": 91.7,
+    "without": 91.7,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 91.7,
+    "without": 91.7,
+    "runs": 2
+   }
+  },
+  "602": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 90.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 80.0,
+    "without": 70.0,
+    "runs": 2
+   }
+  },
+  "603": {
+   "sonnet": {
+    "with": 90.0,
+    "without": 80.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 70.0,
+    "without": 60.0,
+    "runs": 2
+   }
+  },
+  "604": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   }
+  },
+  "605": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 90.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 80.0,
+    "runs": 2
+   }
+  },
+  "606": {
+   "sonnet": {
+    "with": 75.0,
+    "without": 62.5,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 62.5,
+    "runs": 2
+   }
+  },
+  "607": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   }
+  },
+  "702": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 62.5,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 50.0,
+    "runs": 2
+   }
+  },
+  "703": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 75.0,
+    "without": 62.5,
+    "runs": 2
+   }
+  },
+  "704": {
+   "sonnet": {
+    "with": 80.0,
+    "without": 80.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 70.0,
+    "runs": 2
+   }
+  },
+  "706": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 87.5,
+    "runs": 2
+   }
+  },
+  "707": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 90.0,
+    "runs": 2
+   }
+  },
+  "708": {
+   "opus": {
+    "with": 90.0,
+    "without": 70.0,
+    "runs": 2
+   },
+   "sonnet": {
+    "with": 90.0,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 90.0,
+    "without": 40.0,
+    "runs": 2
+   }
+  },
+  "709": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 75.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 87.5,
+    "runs": 2
+   }
+  },
+  "710": {
+   "sonnet": {
+    "with": 80.0,
+    "without": 80.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 80.0,
+    "without": 70.0,
+    "runs": 2
+   }
+  },
+  "711": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 90.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 80.0,
+    "without": 70.0,
+    "runs": 2
+   }
+  },
+  "712": {
+   "sonnet": {
+    "with": 75.0,
+    "without": 75.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 87.5,
+    "without": 75.0,
+    "runs": 2
+   }
+  },
+  "803": {
+   "sonnet": {
+    "with": 87.5,
+    "without": 62.5,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 62.5,
+    "without": 50.0,
+    "runs": 2
+   }
+  },
+  "804": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   }
+  },
+  "805": {
+   "sonnet": {
+    "with": 80.0,
+    "without": 60.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 70.0,
+    "without": 50.0,
+    "runs": 2
+   }
+  },
+  "806": {
+   "sonnet": {
+    "with": 87.5,
+    "without": 87.5,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 62.5,
+    "without": 50.0,
+    "runs": 2
+   }
+  },
+  "807": {
+   "sonnet": {
+    "with": 87.5,
+    "without": 87.5,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 75.0,
+    "without": 100.0,
+    "runs": 2
+   }
+  },
+  "808": {
+   "opus": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "sonnet": {
+    "with": 75.0,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 75.0,
+    "without": 50.0,
+    "runs": 2
+   }
+  },
+  "809": {
+   "opus": {
+    "with": 100.0,
+    "without": 75.0,
+    "runs": 2
+   },
+   "sonnet": {
+    "with": 50.0,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 50.0,
+    "without": 50.0,
+    "runs": 2
+   }
+  },
+  "810": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 50.0,
+    "runs": 2
+   }
+  },
+  "902": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 87.5,
+    "runs": 2
+   }
+  },
+  "903": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 87.5,
+    "without": 75.0,
+    "runs": 2
+   }
+  },
+  "904": {
+   "sonnet": {
+    "with": 80.0,
+    "without": 60.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 90.0,
+    "without": 60.0,
+    "runs": 2
+   }
+  },
+  "906": {
+   "sonnet": {
+    "with": 62.5,
+    "without": 75.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 75.0,
+    "without": 50.0,
+    "runs": 2
+   }
+  },
+  "907": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 25.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 50.0,
+    "without": 50.0,
+    "runs": 2
+   }
+  },
+  "908": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 66.7,
+    "without": 66.7,
+    "runs": 2
+   }
+  },
+  "909": {
+   "sonnet": {
+    "with": 83.3,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 83.3,
+    "without": 66.7,
+    "runs": 2
+   }
+  },
+  "910": {
+   "opus": {
+    "with": 66.7,
+    "without": 58.3,
+    "runs": 2
+   },
+   "sonnet": {
+    "with": 41.7,
+    "without": 33.3,
+    "runs": 4
+   },
+   "haiku": {
+    "with": 33.3,
+    "without": 8.3,
+    "runs": 4
+   }
+  },
+  "1003": {
+   "sonnet": {
+    "with": 75.0,
+    "without": 75.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 87.5,
+    "without": 87.5,
+    "runs": 2
+   }
+  },
+  "1004": {
+   "sonnet": {
+    "with": 50.0,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 50.0,
+    "without": 62.5,
+    "runs": 2
+   }
+  },
+  "1005": {
+   "sonnet": {
+    "with": 60.0,
+    "without": 70.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 60.0,
+    "without": 60.0,
+    "runs": 2
+   }
+  },
+  "1006": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 75.0,
+    "runs": 2
+   }
+  },
+  "1007": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 50.0,
+    "without": 25.0,
+    "runs": 2
+   }
+  },
+  "1008": {
+   "sonnet": {
+    "with": 90.0,
+    "without": 80.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 80.0,
+    "without": 80.0,
+    "runs": 2
+   }
+  },
+  "1009": {
+   "opus": {
+    "with": 87.5,
+    "without": 87.5,
+    "runs": 2
+   },
+   "sonnet": {
+    "with": 75.0,
+    "without": 62.5,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 62.5,
+    "without": 37.5,
+    "runs": 2
+   }
+  },
+  "1010": {
+   "sonnet": {
+    "with": 62.5,
+    "without": 75.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 50.0,
+    "without": 75.0,
+    "runs": 2
+   }
+  },
+  "1103": {
+   "sonnet": {
+    "with": 87.5,
+    "without": 75.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 87.5,
+    "without": 62.5,
+    "runs": 2
+   }
+  },
+  "1105": {
+   "sonnet": {
+    "with": 80.0,
+    "without": 80.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 80.0,
+    "runs": 2
+   }
+  },
+  "1107": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 37.5,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 50.0,
+    "without": 62.5,
+    "runs": 2
+   }
+  },
+  "1108": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 66.7,
+    "without": 33.3,
+    "runs": 2
+   }
+  },
+  "1109": {
+   "sonnet": {
+    "with": 87.5,
+    "without": 87.5,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 62.5,
+    "without": 62.5,
+    "runs": 2
+   }
+  },
+  "1110": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 66.7,
+    "without": 50.0,
+    "runs": 2
+   }
+  },
+  "1201": {
+   "sonnet": {
+    "with": 87.5,
+    "without": 87.5,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   }
+  },
+  "1203": {
+   "sonnet": {
+    "with": 75.0,
+    "without": 75.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 100.0,
+    "without": 87.5,
+    "runs": 2
+   }
+  },
+  "1205": {
+   "opus": {
+    "with": 100.0,
+    "without": 50.0,
+    "runs": 2
+   },
+   "sonnet": {
+    "with": 87.5,
+    "without": 37.5,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 75.0,
+    "without": 37.5,
+    "runs": 2
+   }
+  },
+  "1206": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 25.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 62.5,
+    "without": 25.0,
+    "runs": 2
+   }
+  },
+  "1207": {
+   "sonnet": {
+    "with": 33.3,
+    "without": 50.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 66.7,
+    "without": 33.3,
+    "runs": 2
+   }
+  },
+  "1208": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 100.0,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 66.7,
+    "without": 66.7,
+    "runs": 2
+   }
+  },
+  "1209": {
+   "opus": {
+    "with": 50.0,
+    "without": 33.3,
+    "runs": 2
+   },
+   "sonnet": {
+    "with": 33.3,
+    "without": 33.3,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 50.0,
+    "without": 66.7,
+    "runs": 2
+   }
+  },
+  "1210": {
+   "sonnet": {
+    "with": 100.0,
+    "without": 83.3,
+    "runs": 2
+   },
+   "haiku": {
+    "with": 83.3,
+    "without": 83.3,
+    "runs": 2
+   }
+  }
+ }
+}

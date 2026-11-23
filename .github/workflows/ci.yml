@@ -5,19 +5,81 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
   workflow_dispatch:
 
 jobs:
   marketplace:
-    name: Marketplace manifest
+    name: Marketplace and plugins
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Claude Code
-        run: npm install -g @anthropic-ai/claude-code
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Claude Code, Codex and Copilot CLI
+        run: npm install -g @anthropic-ai/claude-code@2.1.330 @openai/codex@0.167.1 @github/copilot@1.0.109
 
       - name: Validate the marketplace manifest
         run: claude plugin validate ./ --strict
+
+      - name: Validate local plugins
+        run: |
+          for p in plugins/*/; do
+            claude plugin validate "$p" --strict
+          done
+
+      - name: No symlinks in plugins
+        run: |
+          if find plugins -type l | grep .; then
+            echo "Symlinks are not allowed in plugin directories" >&2
+            exit 1
+          fi
+
+      - name: Other agents' manifests match the Claude Code ones
+        run: python3 scripts/sync_manifests.py --check
+
+      - name: Agent Plugins manifests match the 1.0 schema
+        run: |
+          pip install --quiet jsonschema==4.23.0
+          python3 - <<'PY'
+          import glob, json, urllib.request, jsonschema
+          url = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
+          schema = json.load(urllib.request.urlopen(url, timeout=30))
+          for p in glob.glob("plugins/*/plugin.json"):
+              jsonschema.validate(json.load(open(p)), schema)
+              print(p, "OK")
+          PY
+
+      - name: Skills follow the Agent Skills format
+        run: python3 scripts/check_skills.py
+
+      - name: Plugins install in Codex and Copilot
+        run: scripts/smoke_install.sh
+
+      - name: Docs pages named in skills resolve
+        continue-on-error: true  # depends on the public docs site
+        run: python3 evals/check_doc_links.py $(find plugins -name '*.md')
+
+  evals:
+    name: Eval cases
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Eval cases are well formed
+        run: python3 evals/validate.py
+
+      - name: Changed skills come with eval cases
+        if: github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'no-eval-needed')
+        env:
+          BASE: origin/${{ github.base_ref }}
+        run: python3 evals/validate.py --changed-since "$BASE"

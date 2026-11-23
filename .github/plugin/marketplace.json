@@ -1,0 +1,33 @@
+{
+  "name": "tigergraph",
+  "description": "TigerGraph plugins for AI agents",
+  "owner": {
+    "name": "TigerGraph Inc.",
+    "email": "support@tigergraph.com",
+    "url": "https://www.tigergraph.com"
+  },
+  "plugins": [
+    {
+      "name": "tigergraph",
+      "source": {
+        "source": "github",
+        "repo": "tigergraph/tigergraph-mcp",
+        "path": "plugins/tigergraph"
+      },
+      "displayName": "TigerGraph (Self-Managed MCP)",
+      "description": "Connect to any TigerGraph deployment — self-managed, on-premise, or a TigerGraph Savanna instance — using your host and credentials. Explore and evolve the graph schema, run GSQL and Cypher, load data from files and warehouses, and search vector embeddings.",
+      "homepage": "https://github.com/tigergraph/tigergraph-mcp/tree/main/plugins/tigergraph#readme",
+      "license": "Apache-2.0",
+      "category": "database"
+    },
+    {
+      "name": "tigergraph-skills",
+      "source": "./plugins/tigergraph-skills",
+      "displayName": "TigerGraph Skills",
+      "description": "Skills that teach the agent how a TigerGraph cluster works and how to operate it from the command line with gadmin, gsql and the cluster scripts. No database connection needed.",
+      "homepage": "https://github.com/tigergraph/tigergraph/tree/main/plugins/tigergraph-skills#readme",
+      "license": "Apache-2.0",
+      "category": "database"
+    }
+  ]
+}

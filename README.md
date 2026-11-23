@@ -1,31 +1,66 @@
-# TigerGraph plugins for Claude
+# TigerGraph plugins for AI agents
 
-The `tigergraph` plugin marketplace for [Claude Code](https://code.claude.com). It lists
-TigerGraph's Claude plugins; each plugin lives in its own repository.
+The `tigergraph` plugin marketplace for [Claude Code](https://code.claude.com), Codex, GitHub
+Copilot CLI, Cursor and other agents that load plugins or skills.
+
+| Plugin | What it gives the agent | Source |
+|---|---|---|
+| `tigergraph` | Connects to any TigerGraph deployment — self-managed, on-premise, or TigerGraph Savanna — to explore the schema, run GSQL and Cypher, load data, and search vector embeddings. | [tigergraph/tigergraph-mcp](https://github.com/tigergraph/tigergraph-mcp/tree/main/plugins/tigergraph) |
+| `tigergraph-skills` | Skills for how a TigerGraph cluster works and how to operate it from the command line with `gadmin`, `gsql` and the cluster scripts. They need no database connection. | [plugins/tigergraph-skills](plugins/tigergraph-skills) |
+
+See each plugin's README for requirements, configuration, and what it sends where.
 
 ## Install
 
-Add the marketplace once:
+### Claude Code
+
+Add the marketplace once, then install the plugins you want:
 
 ```bash
 claude plugin marketplace add tigergraph/tigergraph
-```
-
-Then install the plugins you want:
-
-```bash
 claude plugin install tigergraph@tigergraph
+claude plugin install tigergraph-skills@tigergraph
 ```
 
 To get new releases, run `claude plugin update <plugin>@tigergraph`.
 
-## Plugins
+### Codex
 
-| Plugin | What it does | Source |
-|---|---|---|
-| `tigergraph` | Connects Claude to any TigerGraph deployment — self-managed, on-premise, or TigerGraph Savanna — to explore the schema, run GSQL and Cypher, load data, and search vector embeddings. | [tigergraph/tigergraph-mcp](https://github.com/tigergraph/tigergraph-mcp/tree/main/plugins/tigergraph) |
+```bash
+codex plugin marketplace add tigergraph/tigergraph
+codex plugin add tigergraph@tigergraph
+codex plugin add tigergraph-skills@tigergraph
+```
 
-See each plugin's README for requirements, configuration, and what it sends where.
+### GitHub Copilot CLI
+
+```bash
+copilot plugin marketplace add tigergraph/tigergraph
+copilot plugin install tigergraph@tigergraph
+copilot plugin install tigergraph-skills@tigergraph
+```
+
+### Cursor and other agents
+
+Each local plugin also has a root `plugin.json` in the open [Agent Plugins](https://agent-plugins.org)
+format, which Cursor, VS Code and Kiro load, and the repository has a Cursor marketplace manifest
+that lists `tigergraph-skills`. To install only the skills in any agent that reads `SKILL.md` files,
+use the [skills CLI](https://skills.sh):
+
+```bash
+npx skills add tigergraph/tigergraph
+```
+
+## Skills
+
+| Skill | Use it for |
+|---|---|
+| `tigergraph-cli` | `gadmin`, `gsql` and the cluster scripts on a TigerGraph node |
+| `tigergraph-cluster` | Services, partitions and replicas, and how queries and loading flow through a cluster |
+
+Skills track the TigerGraph releases that are currently supported. Each skill states its
+baseline in the `compatibility` field, and features that need a newer release are tagged
+inline, for example `[4.1+]`.
 
 ## Already added the marketplace from tigergraph-mcp?
 
@@ -44,19 +79,9 @@ claude plugin install tigergraph@tigergraph
 
 ## Adding a plugin
 
-A plugin lives in its own repository with a `.claude-plugin/plugin.json`. To list it here,
-add an entry to [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json):
-
-- `name` must match the `name` in the plugin's `plugin.json`, and never changes once
-  published.
-- `source` points at the plugin's repository: `{"source": "github", "repo": "tigergraph/<repo>"}`
-  when the plugin is at the repository root, or a `git-subdir` source with a `path` when it
-  is in a subfolder.
-- Set `displayName` and `description` on the entry. Claude Code shows them before install,
-  when it has not yet fetched the plugin's own `plugin.json`.
-- Leave `version` out. Each plugin's `plugin.json` holds its version.
-
-Check the result with `claude plugin validate ./ --strict` before opening a pull request.
+A plugin with source code lives in its own repository and is referenced from here, like
+`tigergraph`. A plugin that is only text, such as skills, lives under [`plugins/`](plugins).
+See [AGENTS.md](AGENTS.md) for the manifest and skill authoring rules.
 
 ## License
 
