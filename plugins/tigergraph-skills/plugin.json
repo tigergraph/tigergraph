@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "tigergraph-skills",
+  "version": "0.1.0",
+  "description": "Skills that teach the agent how a TigerGraph cluster works and how to operate it from the command line with gadmin, gsql and the cluster scripts. No database connection needed.",
+  "author": {
+    "name": "TigerGraph Inc.",
+    "email": "support@tigergraph.com",
+    "url": "https://www.tigergraph.com"
+  },
+  "homepage": "https://github.com/tigergraph/tigergraph/tree/main/plugins/tigergraph-skills#readme",
+  "repository": "https://github.com/tigergraph/tigergraph",
+  "license": "Apache-2.0",
+  "keywords": [
+    "tigergraph",
+    "graph-database",
+    "gsql",
+    "gadmin",
+    "skills"
+  ]
+}
