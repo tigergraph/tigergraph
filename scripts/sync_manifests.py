@@ -73,7 +73,7 @@ def generate():
                 "name": e["name"],
                 "source": codex_source(e),
                 "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
-                "category": "Coding",
+                "category": "Developer Tools",  # Codex catalog taxonomy; database plugins such as supabase use it
             }
             for e in mkt["plugins"]
         ],
